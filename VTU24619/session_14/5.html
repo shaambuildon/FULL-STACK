@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pizza Ordering System</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #ff9966, #ff5e62);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+    }
+
+    .container {
+        background: white;
+        padding: 30px;
+        border-radius: 12px;
+        width: 350px;
+        text-align: center;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    h2 {
+        margin-bottom: 20px;
+    }
+
+    button {
+        padding: 12px;
+        width: 100%;
+        border: none;
+        border-radius: 6px;
+        background: #ff5e62;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        background: #e0484d;
+    }
+
+    .status {
+        margin-top: 20px;
+        padding: 15px;
+        border-radius: 8px;
+        font-weight: bold;
+        display: none;
+    }
+
+    .success {
+        background: #d4edda;
+        color: #155724;
+    }
+
+    .error {
+        background: #f8d7da;
+        color: #721c24;
+    }
+
+    .loading {
+        background: #fff3cd;
+        color: #856404;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>🍕 Pizza Ordering System</h2>
+    <button onclick="orderPizza()">Order Pizza</button>
+    <div id="statusBox" class="status"></div>
+</div>
+
+<script>
+function orderPizza() {
+
+    const statusBox = document.getElementById("statusBox");
+    statusBox.style.display = "block";
+    statusBox.className = "status loading";
+    statusBox.textContent = "⏳ Order placed... Preparing your pizza!";
+
+    // Promise Simulation
+    const pizzaPromise = new Promise((resolve, reject) => {
+
+        setTimeout(() => {
+            const pizzaAvailable = Math.random() > 0.3; // 70% success chance
+
+            if (pizzaAvailable) {
+                resolve("✅ Your pizza is ready! Delivered successfully!");
+            } else {
+                reject("❌ Sorry! Pizza is out of stock.");
+            }
+
+        }, 3000); // 3 seconds delay
+    });
+
+    pizzaPromise
+        .then(message => {
+            statusBox.className = "status success";
+            statusBox.textContent = message;
+        })
+        .catch(error => {
+            statusBox.className = "status error";
+            statusBox.textContent = error;
+        });
+}
+</script>
+
+</body>
+</html>
