@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Media Blog Platform</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f4f4f4;
+    line-height: 1.6;
+}
+
+/* Header */
+header {
+    background: #222;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Navigation */
+nav {
+    background: #444;
+    padding: 10px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+}
+
+/* Blog Container */
+.container {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Blog Posts */
+main article {
+    background: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+
+/* Sidebar */
+aside {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* Footer */
+footer {
+    background: #222;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+
+/* Media Styling */
+video, audio {
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* Custom Controls */
+.controls {
+    margin-top: 10px;
+}
+
+button {
+    padding: 8px 12px;
+    margin-right: 5px;
+    border: none;
+    background: #2196F3;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0b7dda;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>My Media Blog Platform</h1>
+    <p>Articles with Video & Audio Streaming</p>
+</header>
+
+<nav>
+    <a href="#">Home</a>
+    <a href="#">Tech</a>
+    <a href="#">Entertainment</a>
+    <a href="#">Contact</a>
+</nav>
+
+<div class="container">
+
+<main>
+
+<article>
+    <h2>🎥 Video Streaming Post</h2>
+    <p>This blog post contains a video player with streaming capabilities.</p>
+
+    <video id="blogVideo" controls>
+        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+        Your browser does not support video.
+    </video>
+
+    <div class="controls">
+        <button onclick="playVideo()">Play</button>
+        <button onclick="pauseVideo()">Pause</button>
+        <button onclick="muteVideo()">Mute</button>
+    </div>
+</article>
+
+<article>
+    <h2>🎵 Audio Podcast Post</h2>
+    <p>Listen to our weekly podcast directly from this blog.</p>
+
+    <audio id="blogAudio" controls>
+        <source src="https://www.w3schools.com/html/horse.mp3" type="audio/mpeg">
+        Your browser does not support audio.
+    </audio>
+
+    <div class="controls">
+        <button onclick="playAudio()">Play</button>
+        <button onclick="pauseAudio()">Pause</button>
+        <button onclick="increaseVolume()">Volume +</button>
+    </div>
+</article>
+
+</main>
+
+<aside>
+    <h3>About This Blog</h3>
+    <p>This is a content-driven blog platform featuring media streaming and playback controls.</p>
+
+    <h3>Categories</h3>
+    <ul>
+        <li>Web Development</li>
+        <li>AI & ML</li>
+        <li>Cloud Computing</li>
+        <li>Podcasts</li>
+    </ul>
+</aside>
+
+</div>
+
+<footer>
+    <p>© 2026 Media Blog Platform | Designed for Enhanced UX</p>
+</footer>
+
+<script>
+let video = document.getElementById("blogVideo");
+let audio = document.getElementById("blogAudio");
+
+function playVideo() {
+    video.play();
+}
+
+function pauseVideo() {
+    video.pause();
+}
+
+function muteVideo() {
+    video.muted = !video.muted;
+}
+
+function playAudio() {
+    audio.play();
+}
+
+function pauseAudio() {
+    audio.pause();
+}
+
+function increaseVolume() {
+    if(audio.volume < 1) {
+        audio.volume += 0.1;
+    }
+}
+</script>
+
+</body>
+</html>

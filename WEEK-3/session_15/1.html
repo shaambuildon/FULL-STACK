@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Keyboard Movement</title>
+
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        background: linear-gradient(135deg, #4e73df, #1cc88a);
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .game-area {
+        position: relative;
+        width: 90vw;
+        height: 80vh;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        overflow: hidden;
+    }
+
+    .player {
+        position: absolute;
+        width: 60px;
+        height: 60px;
+        background: #4e73df;
+        border-radius: 12px; /* Change to 50% for circle */
+        top: 50px;
+        left: 50px;
+        transition: 0.05s linear;
+    }
+
+    .instructions {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        font-size: 14px;
+        color: #333;
+    }
+</style>
+</head>
+<body>
+
+<div class="game-area" id="gameArea">
+    <div class="instructions">
+        Use Arrow Keys to Move
+    </div>
+    <div class="player" id="player"></div>
+</div>
+
+<script>
+const player = document.getElementById("player");
+const gameArea = document.getElementById("gameArea");
+
+// Position state
+let position = {
+    x: 50,
+    y: 50
+};
+
+const step = 20; // movement speed
+
+// Global keyboard listener
+document.addEventListener("keydown", (event) => {
+
+    const areaWidth = gameArea.clientWidth;
+    const areaHeight = gameArea.clientHeight;
+    const playerSize = player.offsetWidth;
+
+    switch(event.key) {
+
+        case "ArrowUp":
+            if (position.y > 0)
+                position.y -= step;
+            break;
+
+        case "ArrowDown":
+            if (position.y < areaHeight - playerSize)
+                position.y += step;
+            break;
+
+        case "ArrowLeft":
+            if (position.x > 0)
+                position.x -= step;
+            break;
+
+        case "ArrowRight":
+            if (position.x < areaWidth - playerSize)
+                position.x += step;
+            break;
+    }
+
+    updatePosition();
+});
+
+// Update DOM position
+function updatePosition() {
+    player.style.left = position.x + "px";
+    player.style.top = position.y + "px";
+}
+</script>
+
+</body>
+</html>

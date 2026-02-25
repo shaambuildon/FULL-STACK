@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Multi Layout Web Interface</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Navigation */
+nav {
+    background: #222;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+}
+
+/* ========================= */
+/* GRID LAYOUT TEMPLATE */
+/* ========================= */
+
+.grid-layout {
+    display: grid;
+    grid-template-areas:
+        "header header"
+        "nav nav"
+        "main aside"
+        "footer footer";
+    grid-template-columns: 3fr 1fr;
+    min-height: 100vh;
+}
+
+.grid-layout header {
+    grid-area: header;
+    background: #4CAF50;
+    padding: 20px;
+    color: white;
+}
+
+.grid-layout main {
+    grid-area: main;
+    padding: 20px;
+    background: #f4f4f4;
+}
+
+.grid-layout aside {
+    grid-area: aside;
+    padding: 20px;
+    background: #ddd;
+}
+
+.grid-layout footer {
+    grid-area: footer;
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+
+/* ========================= */
+/* FIXED SIDEBAR TEMPLATE */
+/* ========================= */
+
+.fixed-layout {
+    display: flex;
+}
+
+.fixed-layout aside {
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    background: #333;
+    color: white;
+    padding: 20px;
+}
+
+.fixed-layout aside ul {
+    list-style: none;
+}
+
+.fixed-layout aside ul li {
+    margin: 15px 0;
+}
+
+.fixed-layout aside ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.fixed-layout .content {
+    margin-left: 250px;
+    padding: 20px;
+    width: 100%;
+}
+
+.fixed-layout header {
+    background: #2196F3;
+    color: white;
+    padding: 20px;
+}
+
+.fixed-layout main {
+    padding: 20px 0;
+}
+
+.fixed-layout footer {
+    background: #111;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+
+    .grid-layout {
+        grid-template-areas:
+            "header"
+            "nav"
+            "main"
+            "aside"
+            "footer";
+        grid-template-columns: 1fr;
+    }
+
+    .fixed-layout aside {
+        position: relative;
+        width: 100%;
+        height: auto;
+    }
+
+    .fixed-layout .content {
+        margin-left: 0;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ========================= -->
+<!-- GRID LAYOUT SECTION -->
+<!-- ========================= -->
+
+<section class="grid-layout">
+
+<header>
+    <h1>Grid Layout Template</h1>
+</header>
+
+<nav>
+    <a href="#">Home</a>
+    <a href="#">Services</a>
+    <a href="#">Contact</a>
+</nav>
+
+<main>
+    <article>
+        <h2>Main Content</h2>
+        <p>This layout uses CSS Grid and semantic tags like header, nav, main, article, aside, and footer.</p>
+    </article>
+</main>
+
+<aside>
+    <h3>Sidebar</h3>
+    <p>Additional links or ads can be placed here.</p>
+</aside>
+
+<footer>
+    <p>© 2026 Grid Layout Example</p>
+</footer>
+
+</section>
+
+<hr>
+
+<!-- ========================= -->
+<!-- FIXED SIDEBAR SECTION -->
+<!-- ========================= -->
+
+<section class="fixed-layout">
+
+<aside>
+    <h2>Fixed Sidebar</h2>
+    <ul>
+        <li><a href="#">Dashboard</a></li>
+        <li><a href="#">Profile</a></li>
+        <li><a href="#">Settings</a></li>
+    </ul>
+</aside>
+
+<div class="content">
+
+<header>
+    <h1>Fixed Sidebar Layout</h1>
+</header>
+
+<main>
+    <section>
+        <h2>Content Area</h2>
+        <p>This template uses a fixed sidebar with flexbox.</p>
+        <p>The sidebar remains fixed while content scrolls.</p>
+    </section>
+</main>
+
+<footer>
+    <p>© 2026 Fixed Sidebar Example</p>
+</footer>
+
+</div>
+
+</section>
+
+</body>
+</html>
